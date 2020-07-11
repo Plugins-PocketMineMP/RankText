@@ -10,6 +10,7 @@ use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\level\Position;
 use pocketmine\level\sound\ClickSound;
 use pocketmine\network\mcpe\protocol\InventoryTransactionPacket;
+use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginBase;
 use function count;
 use function explode;
@@ -38,6 +39,12 @@ class RankTextPlugin extends PluginBase implements Listener{
 	}
 
 	public function onEnable() : void{
+		if(!($this->getServer()->getPluginManager()->getPlugin("EconomyAPI")) instanceof Plugin){
+			$this->getLogger()->critical("Couldn't find onebone's EconomyAPI...");
+			$this->getServer()->getPluginManager()->disablePlugin($this);
+			return;
+		}
+
 		$data = json_decode(file_exists($file = $this->getDataFolder() . "Data.json") ? file_get_contents($file) : "{}");
 		foreach($data as $pos){
 			[$x, $y, $z, $world] = explode(":", $pos);
