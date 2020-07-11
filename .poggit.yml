@@ -5,5 +5,5 @@ branches:
 projects:
   RankText:
     path: ""
-    icon: icon
+    icon: icon.gif
 ...
