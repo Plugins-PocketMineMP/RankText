@@ -1,0 +1,11 @@
+name: RankText
+author: alvin0319
+main: alvin0319\RankText\RankTextPlugin
+version: 1.0.0
+api: 3.0.0
+
+mcpe-protocol: 407
+
+permissions:
+  ranktext.command.use:
+    default: op
